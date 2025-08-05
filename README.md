@@ -1,5 +1,5 @@
-# Redux Basic Project / Базовий Redux Проект [EN description below]
-- Deploy on Vercel: 
+# Redux Basic Project [EN description below]
+- Deploy on Vercel: https://react-redux-basic-eight.vercel.app/
 
 ## 🇺🇦 Українська
 
