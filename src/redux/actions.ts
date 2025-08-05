@@ -1,4 +1,11 @@
 import { ActionTypes } from './actionType'
+import type { AsyncCounterAction } from './types'
 
-export const increment = () => ({ type: ActionTypes.INCREMENT })
-export const decrement = () => ({ type: ActionTypes.DECREMENT })
+export const incrementAsync = (): AsyncCounterAction => (dispatch) =>
+  setTimeout(() => {
+    dispatch({ type: ActionTypes.INCREMENT })
+  }, 1000)
+export const decrementAsync = (): AsyncCounterAction => (dispatch) =>
+  setTimeout(() => {
+    dispatch({ type: ActionTypes.DECREMENT })
+  }, 1000)
