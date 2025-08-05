@@ -1,11 +1,10 @@
-import { selectCount } from '../redux/selectors'
-import { incrementAsync, decrementAsync } from '../redux/actions'
-import { useDispatch, useSelector } from 'react-redux'
-import type { AppDispatch } from '../redux/types'
+import { useSelector } from 'react-redux'
+import { incrementAsync, decrementAsync, selectCount } from '../redux/slices/counterSlice'
+import { useAppDispatch } from '../redux/store'
 
 const Counter = () => {
   const count = useSelector(selectCount)
-  const dispatch = useDispatch<AppDispatch>()
+  const dispatch = useAppDispatch()
 
   return (
     <div>

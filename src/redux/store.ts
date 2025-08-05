@@ -1,11 +1,8 @@
-import {
-  configureStore, type Middleware, type Action,
-  type MiddlewareAPI, type Dispatch
-} from '@reduxjs/toolkit'
-import counterReducer from './reducer'
-import type { RootState } from './types'
+import { configureStore, type Middleware, type Action } from '@reduxjs/toolkit'
+import counterReducer from './slices/counterSlice'
+import { useDispatch } from 'react-redux'
 
-const logger: Middleware = (storeApi: MiddlewareAPI<Dispatch, RootState>) => (next) => (action) => {
+const logger: Middleware = (storeApi) => (next) => (action) => {
   const prevState = storeApi.getState().counter.count
   const result = next(action)
   const nextState = storeApi.getState().counter.count
@@ -24,4 +21,7 @@ const store = configureStore({
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
 })
 
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
+export const useAppDispatch = () => useDispatch<AppDispatch>()
 export default store
